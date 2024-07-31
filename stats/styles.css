@@ -194,32 +194,124 @@ footer {
 }
 
 #archive-search {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin-bottom: 20px;
 }
 
 #archive-list {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 #archive-list li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #archive-list a {
-  color: var(--text-color);
-  text-decoration: none;
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 #archive-list a:hover {
-  color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 #last-updated {
-  color: var(--text-color);
-  margin-bottom: 10px
+    color: var(--text-color);
+    margin-bottom: 10px
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#search-button {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.archive-year {
+    margin-bottom: 30px;
+}
+
+.archive-year h2 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.archive-item {
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.archive-item:hover {
+    background-color: var(--secondary-color);
+}
+
+.archive-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .archive-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.image-legacy-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.image-legacy {
+    text-align: center;
+    max-width: 48%;
+    flex: 1 1 auto;
+}
+
+.image-legacy img {
+    max-width: 100%;
+    height: auto;
+}
+
+.image-legacy p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+    .image-legacy {
+        max-width: 100%;
+    }
 }

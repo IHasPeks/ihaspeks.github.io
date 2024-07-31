@@ -12,7 +12,7 @@ function loadNavbar() {
   if (!navbarPlaceholder) return;
 
   const currentPath = window.location.pathname;
-  const navbarPath = currentPath.includes('/archive/') ? '../navbar.html' : 'navbar.html';
+  const navbarPath = currentPath.includes('/archive/') || currentPath.includes('/event/') ? '../navbar.html' : 'navbar.html';
 
   fetch(navbarPath)
     .then(response => response.text())
@@ -127,68 +127,83 @@ function addLastUpdated() {
 }
 
 function setupArchiveSearch() {
-  const searchInput = document.getElementById('archive-search');
-  const archiveList = document.getElementById('archive-list');
+    const archiveList = document.getElementById('archive-list');
+    if (!archiveList) return;
 
-  if (!searchInput || !archiveList) {
-    console.log('Search input or archive list not found');
-    return;
-  }
+    // Example archive data - replace with your actual data
+    const archives = [
+        { month: 'Jul', year: 24 },
+        { month: 'Jun', year: 24 },
+        { month: 'May', year: 24 },
+        { month: 'Apr', year: 24 },
+        { month: 'Mar', year: 24 },
+        { month: 'Feb', year: 24 },
+        { month: 'Jan', year: 24 },
+        { month: 'Dec', year: 23 },
+        { month: 'Nov', year: 23 },
+        { month: 'Oct', year: 23 },
+        { month: 'Sep', year: 23 },
+        { month: 'Aug', year: 23 },
+        { month: 'Jul', year: 23 },
+        { month: 'Jun', year: 23 },
+        { month: 'May', year: 23 },
+        { month: 'Apr', year: 23 },
+        { month: 'Mar', year: 23 },
+        { month: 'Feb', year: 23 },
+        { month: 'Jan', year: 23 },
+        { month: 'Dec', year: 22 },
+        { month: 'Nov', year: 22 },
+        { month: 'Oct', year: 22 },
+        { month: 'Sep', year: 22 }
+    ];
 
-  // Clear existing list items
-  archiveList.innerHTML = '';
+    function groupArchivesByYear(archives) {
+        return archives.reduce((acc, archive) => {
+            (acc[archive.year] = acc[archive.year] || []).push(archive);
+            return acc;
+        }, {});
+    }
 
-  // Get existing archive links from the dropdown
-  const archives = [
-    { date: 'May 2024', url: '/stats/archive/may24.html' },
-    { date: 'April 2024', url: '/stats/archive/apr24.html' },
-    { date: 'March 2024', url: '/stats/archive/mar24.html' },
-    { date: 'February 2024', url: '/stats/archive/feb24.html' },
-    { date: 'January 2024', url: '/stats/archive/jan24.html' },
-    { date: 'December 2023', url: '/stats/archive/dec23.html' },
-    { date: 'November 2023', url: '/stats/archive/nov23.html' },
-    { date: 'October 2023', url: '/stats/archive/oct23.html' },
-    { date: 'September 2023', url: '/stats/archive/sep23.html' },
-    { date: 'August 2023', url: '/stats/archive/aug23.html' },
-    { date: 'July 2023', url: '/stats/archive/jul23.html' },
-    { date: 'June 2023', url: '/stats/archive/jun23.html' },
-    { date: 'May 2023', url: '/stats/archive/may23.html' },
-    { date: 'April 2023', url: '/stats/archive/apr23.html' },
-    { date: 'March 2023', url: '/stats/archive/mar23.html' },
-    { date: 'February 2023', url: '/stats/archive/feb23.html' },
-    { date: 'January 2023', url: '/stats/archive/jan23.html' },
-    { date: 'December 2022', url: '/stats/archive/dec22.html' },
-    { date: 'November 2022', url: '/stats/archive/nov22.html' },
-    { date: 'October 2022', url: '/stats/archive/oct22.html' },
-    { date: 'September 2022', url: '/stats/archive/sep22.html' }
-  ];
+    function renderArchives(filteredArchives) {
+        archiveList.innerHTML = '';
+        const groupedArchives = groupArchivesByYear(filteredArchives);
+        
+        Object.entries(groupedArchives).sort((a, b) => b[0] - a[0]).forEach(([year, yearArchives]) => {
+            const yearSection = document.createElement('div');
+            yearSection.className = 'archive-year';
+            yearSection.innerHTML = `<h2>${year}</h2>`;
+            
+            const grid = document.createElement('div');
+            grid.className = 'archive-grid';
+            
+            yearArchives.sort((a, b) => {
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                return months.indexOf(a.month) - months.indexOf(b.month);
+            }).forEach(archive => {
+                const item = document.createElement('div');
+                item.className = 'archive-item';
+                item.innerHTML = `<a href="/stats/archive/${archive.month.toLowerCase()}${year}.html">${archive.month}</a>`;
+                grid.appendChild(item);
+            });
+            
+            yearSection.appendChild(grid);
+            archiveList.appendChild(yearSection);
+        });
+    }
 
-  // Remove duplicates
-  const uniqueArchives = Array.from(new Set(archives.map(a => JSON.stringify(a))))
-    .map(a => JSON.parse(a));
+    renderArchives(archives);
 
-  console.log('Number of archives:', uniqueArchives.length);
+    const searchInput = document.getElementById('archive-search');
 
-  // Populate archive list
-  uniqueArchives.forEach(archive => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = archive.url;
-    a.textContent = archive.date;
-    li.appendChild(a);
-    archiveList.appendChild(li);
-  });
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredArchives = archives.filter(archive => 
+            `${archive.month} ${archive.year}`.toLowerCase().includes(searchTerm)
+        );
+        renderArchives(filteredArchives);
+    }
 
-  console.log('Number of list items:', archiveList.children.length);
-
-  // Search functionality
-  searchInput.addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    Array.from(archiveList.children).forEach(li => {
-      const text = li.textContent.toLowerCase();
-      li.style.display = text.includes(searchTerm) ? '' : 'none';
-    });
-  });
+    searchInput.addEventListener('input', performSearch);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
