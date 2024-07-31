@@ -11,7 +11,10 @@ function loadNavbar() {
   const navbarPlaceholder = document.getElementById('navbar-placeholder');
   if (!navbarPlaceholder) return;
 
-  fetch('navbar.html')
+  const currentPath = window.location.pathname;
+  const navbarPath = currentPath.includes('/archive/') ? '../navbar.html' : 'navbar.html';
+
+  fetch(navbarPath)
     .then(response => response.text())
     .then(data => {
       navbarPlaceholder.innerHTML = data;
