@@ -1,1 +1,0 @@
-# ihaspeks.github.io

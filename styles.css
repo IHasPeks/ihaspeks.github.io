@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* CSS Document */
+
+        body {
+            background: url('https://raw.githubusercontent.com/OfficiallySp/officiallysp.github.io/main/assets/img/peksstatbg.png') no-repeat fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+		}
+
+ .header {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            margin-right: 20px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .navbar a,
+        .dropdown-content a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #f8c471;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #cc9933;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 10px 10px;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #cc9933;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .icons {
+            color: #f8c471;
+            margin-left: 10px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        body {
+            line-height: 1.25;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Roboto Slab', serif;
+            color: #f8c471;
+            padding-left: 15px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 1600px;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+		.image-legacy {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+		}
+
+        ol,
+        p {
+            padding-left: 15px;
+            margin: 15px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        em {
+            font-weight: italic;
+            color: #04AB0A;
+        }
+
+        strong {
+            font-style: bold;
+            color: #DF0DB7;
+        }
+
+        footer {
+            background-color: #cc9933;
+            padding: 2px;
+            text-align: center;
+            font-size: 14px;
+            color: #f8c471;
+            position: static;
+            width: 100%;
+            bottom: 0;
+        }
+
+        a:hover {
+            color: #f0e68c;
+        }
+
+        a:active {
+            color: #ff6347;
+        }
