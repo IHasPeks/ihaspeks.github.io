@@ -110,10 +110,20 @@ function setupBackToTop() {
 }
 
 function addLastUpdated() {
-  const lastUpdated = document.createElement('p');
+  // Remove any existing last-updated elements
+  const existingLastUpdated = document.getElementById('last-updated');
+  if (existingLastUpdated) {
+    existingLastUpdated.remove();
+  }
+
+  const lastUpdated = document.createElement('div');
   lastUpdated.id = 'last-updated';
-  lastUpdated.textContent = `Last updated: ${new Date().toLocaleString()}`;
-  document.querySelector('footer').prepend(lastUpdated);
+  lastUpdated.innerHTML = `<p>Last updated: ${new Date().toLocaleString()}</p>`;
+  
+  const mainTitle = document.querySelector('main h1');
+  if (mainTitle) {
+    mainTitle.insertAdjacentElement('afterend', lastUpdated);
+  }
 }
 
 function setupArchiveSearch() {

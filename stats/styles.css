@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-  --primary-color: #6c5ce7;
-  --secondary-color: #a29bfe;
+  --primary-color: #c39a48;
+  --secondary-color: #e5b7a8;
   --background-color: #2d3436;
   --text-color: #dfe6e9;
   --accent-color: #fd79a8;
@@ -217,4 +217,9 @@ footer {
 
 #archive-list a:hover {
   color: var(--accent-color);
+}
+
+#last-updated {
+  color: var(--text-color);
+  margin-bottom: 10px
 }
