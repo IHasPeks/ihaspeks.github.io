@@ -109,8 +109,10 @@ function setupBackToTop() {
   };
 }
 
+// Add this at the top of the file
+const lastUpdatedTime = "2024-08-01T03:59:42Z"; // Update this whenever you change the content
+
 function addLastUpdated() {
-  // Remove any existing last-updated elements
   const existingLastUpdated = document.getElementById('last-updated');
   if (existingLastUpdated) {
     existingLastUpdated.remove();
@@ -118,7 +120,8 @@ function addLastUpdated() {
 
   const lastUpdated = document.createElement('div');
   lastUpdated.id = 'last-updated';
-  lastUpdated.innerHTML = `<p>Last updated: ${new Date().toLocaleString()}</p>`;
+  const formattedTime = new Date(lastUpdatedTime).toLocaleString();
+  lastUpdated.innerHTML = `<p>Last updated: ${formattedTime}</p>`;
   
   const mainTitle = document.querySelector('main h1');
   if (mainTitle) {
