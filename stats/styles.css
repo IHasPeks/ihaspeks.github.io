@@ -11,10 +11,16 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background-color);
+  background-image: url('/assets/img/peksstatbg.png');
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background-size: cover;
+  background-position: center;
+  background-attachment: local;
   color: var(--text-color);
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .container {
