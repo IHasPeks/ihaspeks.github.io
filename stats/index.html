@@ -6,6 +6,44 @@
     <title>IHasPeks Chatstats</title>
     <link rel="stylesheet" href="/stats/styles.css">
     <script src="https://kit.fontawesome.com/6824d55697.js" crossorigin="anonymous"></script>
+    <style>
+        .floating-banner {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            border-top: 2px solid var(--accent-color);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .floating-banner p {
+            margin: 0;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        .floating-banner a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .floating-banner a:hover {
+            color: var(--secondary-color);
+        }
+        body {
+            padding-bottom: 60px; /* Adjust this value based on the height of your banner */
+        }
+        @media (max-width: 768px) {
+            .floating-banner {
+                padding: 10px;
+            }
+            body {
+                padding-bottom: 50px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -68,6 +106,11 @@
         
         <h4>5659 Total messages Logged from 64 Chat Participants over 7 Streams (17 datapoints)</h4>
     </main>
+
+    <div class="floating-banner">
+        <h3>As of 23rd September 2024, Chatstats are no longer being logged. Thank you for your support!</h3>
+        <a href="https://www.twitch.tv/ihaspeks" target="_blank">Peks on twitch <i class="fas fa-external-link-alt"></i></a>
+    </div>
 
     <footer>
         <p><a href="https://www.twitch.tv/ihaspeks">Watch Peks on Twitch</a></p>
