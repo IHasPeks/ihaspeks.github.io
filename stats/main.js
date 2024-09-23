@@ -135,6 +135,7 @@ function setupArchiveSearch() {
 
     // Example archive data - replace with your actual data
     const archives = [
+        { month: 'Sep', year: 24 },
         { month: 'Aug', year: 24 },
         { month: 'Jul', year: 24 },
         { month: 'Jun', year: 24 },
